@@ -23,7 +23,7 @@ namespace RedSocial
 			else
 				//MainPage = new LoginModalPage (this,"");
 				//MainPage = new Login (this);
-				MainPage = new Contenido();
+				MainPage = new Amigos();
 		}
 
 		protected override void OnStart ()

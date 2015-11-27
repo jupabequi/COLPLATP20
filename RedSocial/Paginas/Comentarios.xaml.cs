@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using XLabs.Forms.Controls;
 
 namespace RedSocial
 {
@@ -96,28 +97,88 @@ namespace RedSocial
 			blanco.BackgroundColor = Color.Green;
 			blanco.AnchorY = 400;
 
-			list = new ListaNotificaciones ();
-			list.HeightRequest = 400;
 
+			RelativeLayout layoutcomentario = new RelativeLayout ();
+
+			BoxView fondo = new BoxView (){
+				BackgroundColor=Color.White,
+				HeightRequest=30
+			};
+
+			layoutcomentario.Children.Add (fondo,
+				Constraint.Constant (0),
+				Constraint.Constant (0),
+				Constraint.RelativeToParent ((Parent) => {
+					return Parent.Width;
+				}),
+				Constraint.RelativeToParent ((Parent) => {
+					return 30;
+				}));
+
+
+			ExtendedEntry ecomentario = new ExtendedEntry (){
+				Placeholder="Escriba un comentario",
+				Font = Font.OfSize("arial",10)
+			};
+			comentario.AnchorY = 25;
+
+			layoutcomentario.Children.Add (ecomentario,
+				Constraint.Constant (2),
+				Constraint.Constant (2),
+				Constraint.RelativeToParent ((Parent) => {
+					return Parent.Width-95;
+				}),
+				Constraint.RelativeToParent ((Parent) => {
+					return 25;
+				}));
+
+			Button publicar = new Button (){
+				Text="Publicar",
+				FontSize=14,
+				TextColor = Color.Gray
+
+			};
+			publicar.AnchorY = 25;
+
+			layoutcomentario.Children.Add (publicar,
+				Constraint.RelativeToParent ((Parent) => {
+					return Parent.Width-100;
+				}),
+				Constraint.Constant (2),
+				Constraint.RelativeToParent ((Parent) => {
+					return 100;
+				}),
+				Constraint.RelativeToParent ((Parent) => {
+					return 25;
+				}));
+
+
+		
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 
-			this.Content = new StackLayout
+
+			StackLayout slayout = new StackLayout
 			{
 				Children =
 				{
+					searchBar,
+					new LayoutNoticiaconcomentarios(),
 
-					layoutsup,
+					layoutcomentario
 
-					layout,
-					barra,
 
-					new ScrollView
-					{
-						Content = list,
-						VerticalOptions = LayoutOptions.FillAndExpand
-					}
 				}
 				};
+
+			ScrollView scrollview = new ScrollView {
+
+				Content = slayout
+
+			};
+
+			this.Content = scrollview;
+
+			ecomentario.Focus ();
 		}
 	}
 }

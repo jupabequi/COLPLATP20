@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-using XLabs.Forms.Controls;
 
 namespace RedSocial
 {
-	public partial class Contenido : ContentPage
+	public partial class Notificaciones : ContentPage
 	{
-		ListaNotificaciones list;
-		Label resultsLabel;
-
-		public Contenido ()
+		public Notificaciones ()
 		{
 			BackgroundColor = Color.FromRgb (96, 178, 54);
 
@@ -31,23 +27,30 @@ namespace RedSocial
 			};
 			//searchBar.SearchButtonPressed += OnSearchBarButtonPressed;
 
-			resultsLabel = new Label();
-			list = new ListaNotificaciones ();
-			list.HeightRequest = 400;
-
-
 
 			StackLayout laynoticias = new StackLayout ();
 			laynoticias.Padding = new Thickness(3, 0, 3, 0);
 
 
-			LayoutNoticias slayNoticias1 = new LayoutNoticias ();
-			ComentariosdeNoticias slayNoticias2 = new ComentariosdeNoticias ();
-			LayoutNoticias slayNoticias3 = new LayoutNoticias ();
+			layoutnotificacion slayNoticias1 = new layoutnotificacion ();
+			layoutnotificacion slayNoticias2 = new layoutnotificacion ();
+			layoutnotificacion slayNoticias3 = new layoutnotificacion ();
+			layoutnotificacion slayNoticias4 = new layoutnotificacion ();
+			layoutnotificacion slayNoticias5 = new layoutnotificacion ();
+			layoutnotificacion slayNoticias6 = new layoutnotificacion ();
+			layoutnotificacion slayNoticias7 = new layoutnotificacion ();
+			layoutnotificacion slayNoticias8 = new layoutnotificacion ();
+			layoutnotificacion slayNoticias9 = new layoutnotificacion ();
 
 			laynoticias.Children.Add (slayNoticias1);
 			laynoticias.Children.Add (slayNoticias2);
 			laynoticias.Children.Add (slayNoticias3);
+			laynoticias.Children.Add (slayNoticias4);
+			laynoticias.Children.Add (slayNoticias5);
+			laynoticias.Children.Add (slayNoticias6);
+			laynoticias.Children.Add (slayNoticias7);
+			laynoticias.Children.Add (slayNoticias8);
+			laynoticias.Children.Add (slayNoticias9);
 
 			RelativeLayout laytbarra = new RelativeLayout ();
 
@@ -153,7 +156,7 @@ namespace RedSocial
 			{
 				Children =
 				{
-					
+
 					searchBar,
 
 					new ScrollView
@@ -165,9 +168,6 @@ namespace RedSocial
 
 				}
 				};
-
-
-			
 
 
 
